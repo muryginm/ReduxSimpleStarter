@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const VideoListItem = ({ video }) => {
-  const imageUrl = video.snippet.thumbnails.default.url;
+class VideoListItem extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <li className='list-group-item'>
-      <div className='video-list media'>
-        <div className='media-left'>
-          <img src={imageUrl} className='media-object' />
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e) {
+    this.props.onClick(this.props.video)
+  }
+
+  render() {
+    const imageUrl = this.props.video.snippet.thumbnails.default.url;
+
+    return (
+      <li className='list-group-item' onClick={this.onClick} >
+        <div className='video-list media'>
+          <div className='media-left'>
+            <img src={imageUrl} className='media-object' />
+          </div>
+          <div className='media-body'>
+            <div className='media-heading'>{this.props.video.snippet.title}</div>
+          </div>
         </div>
-        <div className='media-body'>
-          <div className='media-heading'>{video.snippet.title}</div>
-        </div>
-      </div>
-    </li>
-  );
-};
+      </li>
+    );
+  }
+}
 
 export default VideoListItem;

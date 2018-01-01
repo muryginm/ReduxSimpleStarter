@@ -17,7 +17,9 @@ class App extends Component {
       current: null,
     };
 
-    YoutubeSearch({ key: API_KEY, term: 'surfboards'}, videos => {
+    this.onVideoChanged = this.onVideoChanged.bind(this);
+
+    YoutubeSearch({ key: API_KEY, term: 'snowboards'}, videos => {
       this.setState({
         videos,
         current: videos[0],
@@ -25,12 +27,18 @@ class App extends Component {
     });
   }
 
+  onVideoChanged(video) {
+    this.setState({ current: video });
+  }
+
   render() {
     return (
       <div>
         <SearchBar />
         <VideoDetail video={this.state.current} />
-        <VideoList videos={this.state.videos} />
+        <VideoList
+          videos={this.state.videos}
+          onVideoChanged={this.onVideoChanged} />
       </div>
     );
   }
