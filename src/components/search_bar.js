@@ -13,7 +13,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className='col-md-12'>
         <input
           onChange={this.onInputChange}
           value={this.state.term} />

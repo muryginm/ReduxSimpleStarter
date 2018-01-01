@@ -14,10 +14,14 @@ class App extends Component {
 
     this.state = {
       videos: [],
+      current: null,
     };
 
     YoutubeSearch({ key: API_KEY, term: 'surfboards'}, videos => {
-      this.setState({ videos });
+      this.setState({
+        videos,
+        current: videos[0],
+      });
     });
   }
 
@@ -25,7 +29,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar />
-        <VideoDetail video={this.state.videos[0]} />
+        <VideoDetail video={this.state.current} />
         <VideoList videos={this.state.videos} />
       </div>
     );
