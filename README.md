@@ -1,4 +1,4 @@
-# Youtube Playlist
+# Youtube Player
 
 ## Getting Started
 1. Install dependencies
