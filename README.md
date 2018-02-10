@@ -10,3 +10,5 @@
   ```bash
   npm start
   ```
+
+1. Navigate to http://localhost:8080
